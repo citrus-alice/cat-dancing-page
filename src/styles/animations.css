@@ -1,0 +1,495 @@
+/* Dancing Cat Animation Styles */
+
+.dancing-cat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.cat-wrapper {
+  transform-origin: center bottom;
+  transition: all 0.3s ease-in-out;
+}
+
+.cat-image {
+  width: 200px;
+  height: 200px;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+  transition: filter 0.3s ease-in-out;
+}
+
+/* Dance Animation Keyframes */
+@keyframes dance {
+  0% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  10% {
+    transform: translateY(-20px) rotate(-5deg) scale(1.05);
+  }
+  20% {
+    transform: translateY(-10px) rotate(5deg) scale(0.95);
+  }
+  30% {
+    transform: translateY(-30px) rotate(-10deg) scale(1.1);
+  }
+  40% {
+    transform: translateY(-15px) rotate(8deg) scale(0.9);
+  }
+  50% {
+    transform: translateY(-25px) rotate(0deg) scale(1.15);
+  }
+  60% {
+    transform: translateY(-20px) rotate(-8deg) scale(0.95);
+  }
+  70% {
+    transform: translateY(-35px) rotate(10deg) scale(1.05);
+  }
+  80% {
+    transform: translateY(-10px) rotate(-5deg) scale(0.9);
+  }
+  90% {
+    transform: translateY(-20px) rotate(3deg) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-3deg);
+  }
+  75% {
+    transform: rotate(3deg);
+  }
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0 10px 30px rgba(255, 140, 66, 0.5)) drop-shadow(0 0 20px rgba(255, 140, 66, 0.3));
+  }
+}
+
+/* Animation States */
+.cat-wrapper.dancing {
+  animation: dance 2s infinite ease-in-out;
+}
+
+.cat-wrapper.dancing .cat-image {
+  animation: glow 2s infinite ease-in-out;
+}
+
+/* Controls Container */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%;
+  max-width: 400px;
+}
+
+/* Button Styles */
+.dance-button {
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border: none;
+  border-radius: 50px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  min-width: 200px;
+}
+
+.dance-button:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(45deg, #ff5252, #d63031);
+}
+
+.dance-button:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.dance-button:focus {
+  outline: 3px solid rgba(255, 107, 107, 0.5);
+  outline-offset: 2px;
+}
+
+/* Speed Controls */
+.speed-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1.5rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  width: 100%;
+}
+
+.speed-label {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.speed-slider {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+  cursor: pointer;
+}
+
+.speed-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.speed-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.speed-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+  border-radius: 50%;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s ease;
+}
+
+.speed-slider::-moz-range-thumb:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.speed-slider:focus {
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.3);
+}
+
+.speed-buttons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.speed-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  padding: 0.5rem 1rem;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+  font-weight: 500;
+  backdrop-filter: blur(5px);
+}
+
+.speed-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.speed-btn:active {
+  transform: translateY(0);
+}
+
+.speed-btn:focus {
+  outline: 2px solid rgba(255, 107, 107, 0.5);
+  outline-offset: 2px;
+}
+
+/* Instructions */
+.instructions {
+  color: white;
+  text-align: center;
+  opacity: 0.9;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.instructions p {
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.instructions kbd {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.9rem;
+  font-family: monospace;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Floating Animation for Container */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.dancing-cat-container {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Additional sparkle effect */
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cat-wrapper.dancing::before {
+  content: '✨';
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  font-size: 1.5rem;
+  animation: sparkle 1s infinite ease-in-out;
+}
+
+.cat-wrapper.dancing::after {
+  content: '✨';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 1.5rem;
+  animation: sparkle 1s infinite ease-in-out 0.5s;
+}
+
+.cat-wrapper {
+  position: relative;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dancing-cat-container {
+    padding: 1rem;
+    gap: 1.5rem;
+    margin: 1rem;
+    border-radius: 15px;
+  }
+
+  .cat-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .dance-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+
+  .instructions {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  /* Adjust dance animation for smaller screens */
+  @keyframes dance {
+    0% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+    10% {
+      transform: translateY(-15px) rotate(-3deg) scale(1.03);
+    }
+    20% {
+      transform: translateY(-8px) rotate(3deg) scale(0.97);
+    }
+    30% {
+      transform: translateY(-20px) rotate(-7deg) scale(1.07);
+    }
+    40% {
+      transform: translateY(-10px) rotate(5deg) scale(0.93);
+    }
+    50% {
+      transform: translateY(-18px) rotate(0deg) scale(1.1);
+    }
+    60% {
+      transform: translateY(-12px) rotate(-5deg) scale(0.97);
+    }
+    70% {
+      transform: translateY(-22px) rotate(7deg) scale(1.03);
+    }
+    80% {
+      transform: translateY(-8px) rotate(-3deg) scale(0.93);
+    }
+    90% {
+      transform: translateY(-15px) rotate(2deg) scale(1.05);
+    }
+    100% {
+      transform: translateY(0) rotate(0deg) scale(1);
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dancing-cat-container {
+    padding: 0.5rem;
+    gap: 1rem;
+    margin: 0.5rem;
+    border-radius: 10px;
+  }
+
+  .cat-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dance-button {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+
+  .instructions {
+    font-size: 0.9rem;
+    padding: 0 0.5rem;
+  }
+
+  .cat-wrapper.dancing::before,
+  .cat-wrapper.dancing::after {
+    font-size: 1.2rem;
+    top: -15px;
+  }
+
+  .cat-wrapper.dancing::before {
+    left: -15px;
+  }
+
+  .cat-wrapper.dancing::after {
+    right: -15px;
+  }
+}
+
+@media (max-width: 320px) {
+  .cat-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .dance-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .instructions {
+    font-size: 0.8rem;
+  }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+  .dancing-cat-container {
+    flex-direction: row;
+    gap: 2rem;
+    padding: 1rem 2rem;
+  }
+
+  .cat-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .dance-button {
+    order: 2;
+  }
+
+  .instructions {
+    order: 3;
+    font-size: 0.9rem;
+  }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cat-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .cat-wrapper.dancing {
+    animation: none;
+  }
+
+  .cat-wrapper.dancing .cat-image {
+    animation: none;
+  }
+
+  .dancing-cat-container {
+    animation: none;
+  }
+
+  .cat-wrapper.dancing::before,
+  .cat-wrapper.dancing::after {
+    animation: none;
+  }
+
+  .dance-button:hover {
+    transform: none;
+  }
+}
